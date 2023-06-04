@@ -7,7 +7,10 @@ export class Welcome extends React.Component {
         return (
             <div>
                 <p> Welcome, <strong>{name}</strong>!</p>
-                {age > 18 && age < 65 && <Age age={age} />}
+                {age > 18 
+                ? ({ age })
+                :(<p>You are very young!</p>)
+                }
             </div>
         )
 
