@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import CardComponent from "./CardComponent.jsx";
+import { App2 } from "./App2.jsx"
 
 function App() {
   const [items, setItems] = useState([]);
@@ -41,6 +42,8 @@ function App() {
         updateItem={updateItem}
         deleteItem={deleteItem} content={item}></CardComponent>
       ))}
+
+      <App2 />
     </div>
   );
 }
