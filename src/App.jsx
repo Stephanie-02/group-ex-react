@@ -10,6 +10,29 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
 
+  useEffect (() => {
+    if(items && items.length > 0) {
+      localStorage.setItem('myitems', JSON.stringify(items));
+    }
+    if (username && username !== "") {
+      localStorage.setItem('username', JSON.stringify(username));
+    }
+  }, [items, username]);
+
+  useEffect (() => {
+    let storedJson = localStorage.getItem('myitems');
+    if(storedJson) {
+      let jsonObj = JSON.parse(storedJson);
+      setItems(jsonObj)
+    }
+    let storedUser = localStorage.getItem('username');
+    if (storedUser) {
+      let userObj = JSON.parse(storedUser);
+      setUsername(userObj);
+      setLoggedIn(true);
+    }
+  }, [])
+
   const updateItem = (index, text) => {
     let toUpdateItems = [...items];
     toUpdateItems[index] = text;
